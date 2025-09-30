@@ -29,6 +29,7 @@ final class NotificationCenterEarlyObserverSample {
     }
     
     func send(_ messages: [String]) {
+        // 一気に送った場合、7個程度は受信できる
         for message in messages {
             Self.notificationCenter.post(
                 name: Self.notificationName,
