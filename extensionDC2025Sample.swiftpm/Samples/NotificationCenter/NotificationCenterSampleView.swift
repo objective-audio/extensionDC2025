@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct NotificationCenterSampleView: View {
-    let sample = NotificationCenterSample()
+    let sample = NotificationCenterLateObserverSample()
     @State private var currentValue: Int = 0
     
     var body: some View {

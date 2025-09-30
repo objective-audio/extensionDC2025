@@ -16,9 +16,9 @@ struct ContentView: View {
                 
                 NavigationLink(destination: NotificationCenterSampleView()) {
                     VStack(alignment: .leading) {
-                        Text("NotificationCenter Sample")
+                        Text("NotificationCenter Late Observer")
                             .font(.headline)
-                        Text("NotificationCenterの動作確認")
+                        Text("notifications取得前にpostされた通知は受信できない")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }

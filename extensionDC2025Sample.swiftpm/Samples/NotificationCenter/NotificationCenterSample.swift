@@ -1,18 +1,17 @@
 import Foundation
 
-final class NotificationCenterSample {
+final class NotificationCenterLateObserverSample {
     private static let notificationCenter = NotificationCenter.default
     private static let notificationName = Notification.Name("SampleNotification")
     private let task: Task<Void, Never>
     
     init() {
-        // AsyncSequenceを返すnotifications関数を使用
         task = Task {
             let notifications = Self.notificationCenter.notifications(named: Self.notificationName)
             for await notification in notifications {
                 if let userInfo = notification.userInfo,
                    let message = userInfo["message"] as? String {
-                    print("NotificationCenterSample received: \(message)")
+                    print("NotificationCenterLateObserverSample received: \(message)")
                 }
             }
         }
