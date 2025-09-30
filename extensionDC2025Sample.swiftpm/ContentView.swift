@@ -13,6 +13,16 @@ struct ContentView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                
+                NavigationLink(destination: NotificationCenterSampleView()) {
+                    VStack(alignment: .leading) {
+                        Text("NotificationCenter Sample")
+                            .font(.headline)
+                        Text("NotificationCenterの動作確認")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
             .navigationTitle("Concurrency Samples")
         }
