@@ -39,6 +39,7 @@ final class NotificationCenterEarlyObserverSample {
     }
     
     func sendNotificationBatch() {
+        // 7個程度は送信できる
         for i in 1...10 {
             sendNotification(message: "Batch value: \(i)")
         }
