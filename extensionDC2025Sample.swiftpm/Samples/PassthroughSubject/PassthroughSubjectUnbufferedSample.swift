@@ -19,7 +19,7 @@ final class PassthroughSubjectUnbufferedSample {
         
         Task {
             for i in 1...10 {
-                // おそらく受信できない
+                // ほぼ受信できない
                 self.subject.send(i)
             }
         }
@@ -34,5 +34,12 @@ final class PassthroughSubjectUnbufferedSample {
     
     func finish() {
         subject.send(completion: .finished)
+    }
+    
+    func sendBatch() {
+        // ほぼ受信できない
+        for i in 1...10 {
+            subject.send(i)
+        }
     }
 }

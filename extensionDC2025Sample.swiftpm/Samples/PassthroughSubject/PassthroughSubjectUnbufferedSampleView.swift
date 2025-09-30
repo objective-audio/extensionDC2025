@@ -21,6 +21,10 @@ struct PassthroughSubjectUnbufferedSampleView: View {
             Button("Finish Stream") {
                 sample.finish()
             }
+            
+            Button("Send Batch (10 values)") {
+                sample.sendBatch()
+            }
         }
         .navigationTitle("PassthroughSubject")
     }
