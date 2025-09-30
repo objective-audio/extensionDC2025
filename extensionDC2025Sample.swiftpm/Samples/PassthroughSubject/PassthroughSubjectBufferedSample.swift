@@ -14,7 +14,7 @@ final class PassthroughSubjectBufferedSample {
         
         task = Task {
             while let value = await iterator.next() {
-                print("PassthroughSubjectBufferedSample value: \(value)")
+                print("PassthroughSubjectBufferedSample received : \(value)")
             }
         }
         

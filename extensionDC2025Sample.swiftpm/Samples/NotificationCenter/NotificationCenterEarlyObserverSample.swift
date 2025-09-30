@@ -14,7 +14,7 @@ final class NotificationCenterEarlyObserverSample {
             for await notification in notifications {
                 if let userInfo = notification.userInfo,
                    let message = userInfo["message"] as? String {
-                    print("NotificationCenterEarlyObserverSample received: \(message)")
+                    print("NotificationCenterEarlyObserverSample received : \(message)")
                 }
             }
         }

@@ -13,7 +13,7 @@ final class PassthroughSubjectUnbufferedSample {
         
         task = Task {
             for await value in values {
-                print("PassthroughSubjectUnbufferedSample value: \(value)")
+                print("PassthroughSubjectUnbufferedSample received : \(value)")
             }
         }
         

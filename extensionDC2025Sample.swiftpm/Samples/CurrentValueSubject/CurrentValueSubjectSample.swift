@@ -13,7 +13,7 @@ final class CurrentValueSubjectSample {
         
         task = Task {
             for await value in values {
-                print("CurrentValueSubjectSample value: \(value)")
+                print("CurrentValueSubjectSample received : \(value)")
             }
         }
         
