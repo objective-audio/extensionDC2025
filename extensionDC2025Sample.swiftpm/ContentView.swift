@@ -81,7 +81,7 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         Text("CurrentValueSubject Sample")
                             .font(.headline)
-                        Text("初期値を持つSubjectの動作確認")
+                        Text("値を持つSubjectの動作確認")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
