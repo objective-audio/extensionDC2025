@@ -44,9 +44,4 @@ final class PassthroughSubjectUnbufferedSample {
         subject.send(completion: .finished)
     }
     
-    func sendBatch() {
-        // ほぼ受信できない
-        let values = Array(101...110)
-        send(values)
-    }
 }

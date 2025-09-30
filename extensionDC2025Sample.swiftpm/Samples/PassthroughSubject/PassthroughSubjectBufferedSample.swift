@@ -37,9 +37,4 @@ final class PassthroughSubjectBufferedSample {
         subject.send(completion: .finished)
     }
     
-    func sendBatch() {
-        // バッファより少し大きい数（15個）を送信
-        let values = Array(100...115)
-        send(values)
-    }
 }

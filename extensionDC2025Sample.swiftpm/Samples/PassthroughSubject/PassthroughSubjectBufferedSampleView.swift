@@ -14,7 +14,8 @@ struct PassthroughSubjectBufferedSampleView: View {
             }
             
             Button("Send Batch (15 values)") {
-                sample.sendBatch()
+                let values = Array(100...115)
+                sample.send(values)
             }
             
             Button("Finish Stream") {

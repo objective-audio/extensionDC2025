@@ -18,7 +18,8 @@ struct NotificationCenterEarlyObserverSampleView: View {
             }
             
             Button("Send Batch (10 notifications)") {
-                sample.sendNotificationBatch()
+                let messages = (101...110).map { "Batch value: \($0)" }
+                sample.send(messages)
             }
         }
         .navigationTitle("NotificationCenter")

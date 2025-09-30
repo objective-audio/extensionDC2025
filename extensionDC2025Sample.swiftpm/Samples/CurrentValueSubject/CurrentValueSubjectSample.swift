@@ -36,9 +36,4 @@ final class CurrentValueSubjectSample {
         subject.send(completion: .finished)
     }
     
-    func sendBatch() {
-        // 少なくとも最後は受信できる
-        let values = Array(101...110)
-        send(values)
-    }
 }

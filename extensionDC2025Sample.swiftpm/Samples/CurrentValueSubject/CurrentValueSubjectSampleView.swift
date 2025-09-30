@@ -14,7 +14,8 @@ struct CurrentValueSubjectSampleView: View {
             }
             
             Button("Send Batch (10 values)") {
-                sample.sendBatch()
+                let values = Array(101...110)
+                sample.send(values)
             }
             
             Button("Finish Stream") {
