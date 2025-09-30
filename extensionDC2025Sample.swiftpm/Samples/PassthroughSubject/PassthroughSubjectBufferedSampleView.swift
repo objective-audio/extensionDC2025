@@ -13,11 +13,6 @@ struct PassthroughSubjectBufferedSampleView: View {
                 sample.send(currentValue)
             }
             
-            Button("Send +10") {
-                currentValue += 10
-                sample.send(currentValue)
-            }
-            
             Button("Send Batch (15 values)") {
                 sample.sendBatch()
             }
