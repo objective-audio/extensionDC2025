@@ -3,18 +3,16 @@ import Foundation
 final class NotificationCenterSample {
     private let notificationCenter = NotificationCenter.default
     private let notificationName = Notification.Name("SampleNotification")
-    private var observer: NSObjectProtocol?
+    private let task: Task<Void, Never>
     
     init() {
-        // NotificationCenterのnotificationsを使用して通知を監視
-        observer = notificationCenter.addObserver(
-            forName: notificationName,
-            object: nil,
-            queue: .main
-        ) { notification in
-            if let userInfo = notification.userInfo,
-               let message = userInfo["message"] as? String {
-                print("NotificationCenterSample received: \(message)")
+        // AsyncSequenceを返すnotifications関数を使用
+        task = Task {
+            for await notification in notificationCenter.notifications(named: notificationName) {
+                if let userInfo = notification.userInfo,
+                   let message = userInfo["message"] as? String {
+                    print("NotificationCenterSample received: \(message)")
+                }
             }
         }
         
@@ -22,9 +20,7 @@ final class NotificationCenterSample {
     }
     
     deinit {
-        if let observer = observer {
-            notificationCenter.removeObserver(observer)
-        }
+        task.cancel()
         print("NotificationCenterSample deinitialized")
     }
     
