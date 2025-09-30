@@ -18,6 +18,11 @@ struct AsyncStreamSampleView: View {
                 sample.send(currentValue)
             }
             
+            Button("Send Batch (10 values)") {
+                sample.sendBatch(startValue: currentValue)
+                currentValue += 10
+            }
+            
             Button("Finish Stream") {
                 sample.finish()
             }
