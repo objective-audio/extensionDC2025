@@ -21,10 +21,8 @@ final class PassthroughSubjectUnbufferedSample {
         subject.send(0)
         
         Task {
-            for i in 1...10 {
-                // ほぼ受信できない
-                self.subject.send(i)
-            }
+            // 1つも受信できない可能性あり
+            send(Array(-10..<0))
         }
     }
     
@@ -34,8 +32,8 @@ final class PassthroughSubjectUnbufferedSample {
     }
     
     func send(_ values: [Int]) {
+        // 受信側で待機していれば一つは受信できる
         for value in values {
-            // 受信側で待機していて単独で送信する分には受信できる
             subject.send(value)
         }
     }
