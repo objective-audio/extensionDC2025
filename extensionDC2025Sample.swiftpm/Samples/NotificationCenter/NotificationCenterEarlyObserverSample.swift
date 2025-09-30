@@ -20,7 +20,7 @@ final class NotificationCenterEarlyObserverSample {
         }
         
         // 受信できる
-        sendNotification(message: "initialized")
+        send(["initialized"])
     }
     
     deinit {

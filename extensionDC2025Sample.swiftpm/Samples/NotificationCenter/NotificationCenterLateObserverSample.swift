@@ -18,7 +18,7 @@ final class NotificationCenterLateObserverSample {
         }
         
         // 受信できない
-        sendNotification(message: "initialized")
+        send(["initialized"])
     }
     
     deinit {
