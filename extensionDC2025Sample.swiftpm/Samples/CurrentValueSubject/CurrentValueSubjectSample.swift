@@ -14,6 +14,8 @@ final class CurrentValueSubjectSample {
             }
         }
         
+        // 受信できない
+        subject.send(0)
         // 受信できる
         subject.send(1)
     }
@@ -29,8 +31,8 @@ final class CurrentValueSubjectSample {
     }
     
     func sendBatch() {
-        // ほぼ受信できる
-        for i in 1...10 {
+        // 少なくとも最後は受信できる
+        for i in 101...110 {
             subject.send(i)
         }
     }
