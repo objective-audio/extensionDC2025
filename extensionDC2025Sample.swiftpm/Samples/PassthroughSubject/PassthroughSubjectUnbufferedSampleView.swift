@@ -19,6 +19,18 @@ struct PassthroughSubjectUnbufferedSampleView: View {
                 currentValue += 10
             }
             
+            Button("Send Batch (10 values) with Yield") {
+                let values = Array(currentValue..<(currentValue + 10))
+                sample.send(values, wait: .yield)
+                currentValue += 10
+            }
+            
+            Button("Send Batch (10 values) with Sleep") {
+                let values = Array(currentValue..<(currentValue + 10))
+                sample.send(values, wait: .sleep(seconds: 0.1))
+                currentValue += 10
+            }
+            
             Button("Finish Stream") {
                 sample.finish()
             }
