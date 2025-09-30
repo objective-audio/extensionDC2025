@@ -1,10 +1,21 @@
 import SwiftUI
 
+enum SampleDestination: Hashable {
+    case asyncStream
+    case notificationCenterLate
+    case notificationCenterEarly
+    case passthroughSubject
+}
+
 struct ContentView: View {
+    @State private var navigationPath = NavigationPath()
+    
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             List {
-                NavigationLink(destination: AsyncStreamSampleView()) {
+                Button {
+                    navigationPath.append(SampleDestination.asyncStream)
+                } label: {
                     VStack(alignment: .leading) {
                         Text("AsyncStream Sample")
                             .font(.headline)
@@ -14,7 +25,9 @@ struct ContentView: View {
                     }
                 }
                 
-                NavigationLink(destination: NotificationCenterLateObserverSampleView()) {
+                Button {
+                    navigationPath.append(SampleDestination.notificationCenterLate)
+                } label: {
                     VStack(alignment: .leading) {
                         Text("NotificationCenter Late Observer")
                             .font(.headline)
@@ -24,7 +37,9 @@ struct ContentView: View {
                     }
                 }
                 
-                NavigationLink(destination: NotificationCenterEarlyObserverSampleView()) {
+                Button {
+                    navigationPath.append(SampleDestination.notificationCenterEarly)
+                } label: {
                     VStack(alignment: .leading) {
                         Text("NotificationCenter Early Observer")
                             .font(.headline)
@@ -34,7 +49,9 @@ struct ContentView: View {
                     }
                 }
                 
-                NavigationLink(destination: PassthroughSubjectSampleView()) {
+                Button {
+                    navigationPath.append(SampleDestination.passthroughSubject)
+                } label: {
                     VStack(alignment: .leading) {
                         Text("PassthroughSubject Sample")
                             .font(.headline)
@@ -45,6 +62,18 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Concurrency Samples")
+            .navigationDestination(for: SampleDestination.self) { destination in
+                switch destination {
+                case .asyncStream:
+                    AsyncStreamSampleView()
+                case .notificationCenterLate:
+                    NotificationCenterLateObserverSampleView()
+                case .notificationCenterEarly:
+                    NotificationCenterEarlyObserverSampleView()
+                case .passthroughSubject:
+                    PassthroughSubjectSampleView()
+                }
+            }
         }
     }
 }
