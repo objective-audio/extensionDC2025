@@ -10,17 +10,17 @@ struct AsyncStreamSampleView: View {
             
             Button("Send +1") {
                 currentValue += 1
-                sample.send(currentValue)
+                sample.send([currentValue])
             }
             
             Button("Send +10") {
                 currentValue += 10
-                sample.send(currentValue)
+                sample.send([currentValue])
             }
             
             Button("Send Batch (10 values)") {
                 let batchValues = Array(currentValue..<(currentValue + 10))
-                sample.sendBatch(values: batchValues)
+                sample.send(batchValues)
                 currentValue += 10
             }
             

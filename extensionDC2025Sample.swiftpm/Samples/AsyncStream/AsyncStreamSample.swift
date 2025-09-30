@@ -30,18 +30,14 @@ final class AsyncStreamSample {
         print("AsyncStreamSample deinit end")
     }
     
-    func send(_ value: Int) {
-        continuation.yield(value)
-    }
-    
-    func finish() {
-        continuation.finish()
-    }
-    
-    func sendBatch(values: [Int]) {
+    func send(_ values: [Int]) {
         // 配列の値をまとめて送信
         for value in values {
             continuation.yield(value)
         }
+    }
+    
+    func finish() {
+        continuation.finish()
     }
 }
