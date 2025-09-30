@@ -4,7 +4,8 @@ enum SampleDestination: Hashable {
     case asyncStream
     case notificationCenterLate
     case notificationCenterEarly
-    case passthroughSubject
+    case passthroughSubjectLate
+    case passthroughSubjectEarly
 }
 
 struct ContentView: View {
@@ -50,12 +51,24 @@ struct ContentView: View {
                 }
                 
                 Button {
-                    navigationPath.append(SampleDestination.passthroughSubject)
+                    navigationPath.append(SampleDestination.passthroughSubjectLate)
                 } label: {
                     VStack(alignment: .leading) {
-                        Text("PassthroughSubject Sample")
+                        Text("PassthroughSubject Late Observer")
                             .font(.headline)
                         Text("values受信処理開始前に送信された値は受信できない")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                
+                Button {
+                    navigationPath.append(SampleDestination.passthroughSubjectEarly)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text("PassthroughSubject Early Observer")
+                            .font(.headline)
+                        Text("values受信処理開始後に送信された値は受信できる")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -70,8 +83,10 @@ struct ContentView: View {
                     NotificationCenterLateObserverSampleView()
                 case .notificationCenterEarly:
                     NotificationCenterEarlyObserverSampleView()
-                case .passthroughSubject:
+                case .passthroughSubjectLate:
                     PassthroughSubjectLateObserverSampleView()
+                case .passthroughSubjectEarly:
+                    PassthroughSubjectEarlyObserverSampleView()
                 }
             }
         }
