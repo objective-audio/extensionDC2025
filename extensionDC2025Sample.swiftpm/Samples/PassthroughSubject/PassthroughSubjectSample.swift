@@ -14,12 +14,21 @@ final class PassthroughSubjectSample {
             }
         }
         
+        // 受信できない
         subject.send(0)
+        
+        Task {
+            for i in 1...10 {
+                // おそらく受信できない
+                self.subject.send(i)
+            }
+        }
     }
     
     deinit { task.cancel() }
     
     func send(_ value: Int) {
+        // 受信側で待機していて単独で送信する分には受信できる
         subject.send(value)
     }
     
