@@ -14,7 +14,7 @@ struct ContentView: View {
                     }
                 }
                 
-                NavigationLink(destination: NotificationCenterSampleView()) {
+                NavigationLink(destination: NotificationCenterLateObserverSampleView()) {
                     VStack(alignment: .leading) {
                         Text("NotificationCenter Late Observer")
                             .font(.headline)
