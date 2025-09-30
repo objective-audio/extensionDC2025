@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct AsyncStreamSampleView: View {
-    @State private var sample: AsyncStreamSample?
+    let sample = AsyncStreamSample()
     @State private var currentValue: Int = 0
+    @State private var isFinished = false
     
     var body: some View {
         VStack(spacing: 20) {
@@ -10,29 +11,28 @@ struct AsyncStreamSampleView: View {
             
             Button("Send +1") {
                 currentValue += 1
-                sample?.send(currentValue)
+                sample.send(currentValue)
             }
-            .disabled(sample == nil)
+            .disabled(isFinished)
             
             Button("Send +10") {
                 currentValue += 10
-                sample?.send(currentValue)
+                sample.send(currentValue)
             }
-            .disabled(sample == nil)
+            .disabled(isFinished)
             
             Button("Finish Stream") {
-                sample?.finish()
-                sample = nil
+                sample.finish()
+                isFinished = true
             }
-            .disabled(sample == nil)
+            .disabled(isFinished)
+            
+            if isFinished {
+                Text("Stream finished - sending after finish won't be received")
+                    .font(.caption)
+                    .foregroundColor(.red)
+            }
         }
         .navigationTitle("AsyncStream")
-        .onAppear {
-            sample = AsyncStreamSample()
-        }
-        .onDisappear {
-            sample?.finish()
-            sample = nil
-        }
     }
 }
