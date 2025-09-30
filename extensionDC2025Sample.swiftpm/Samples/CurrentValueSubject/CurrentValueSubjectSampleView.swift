@@ -14,8 +14,9 @@ struct CurrentValueSubjectSampleView: View {
             }
             
             Button("Send Batch (10 values)") {
-                let values = Array(101...110)
+                let values = Array(currentValue..<(currentValue + 10))
                 sample.send(values)
+                currentValue += 10
             }
             
             Button("Finish Stream") {
