@@ -13,10 +13,6 @@ struct NotificationCenterEarlyObserverSampleView: View {
                 currentValue += 1
             }
             
-            Button("Send Custom Message") {
-                sample.send(["Custom message at \(Date())"])
-            }
-            
             Button("Send Batch (10 notifications)") {
                 let messages = (currentValue..<(currentValue + 10)).map { "Batch value: \($0)" }
                 sample.send(messages)

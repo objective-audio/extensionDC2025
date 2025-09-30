@@ -12,10 +12,6 @@ struct NotificationCenterLateObserverSampleView: View {
                 sample.send(["Value: \(currentValue)"])
                 currentValue += 1
             }
-            
-            Button("Send Custom Message") {
-                sample.send(["Custom message at \(Date())"])
-            }
         }
         .navigationTitle("NotificationCenter")
     }
