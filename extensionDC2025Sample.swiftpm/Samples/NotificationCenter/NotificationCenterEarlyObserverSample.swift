@@ -28,12 +28,18 @@ final class NotificationCenterEarlyObserverSample {
         print("NotificationCenterEarlyObserverSample deinit end")
     }
     
+    func send(_ messages: [String]) {
+        for message in messages {
+            Self.notificationCenter.post(
+                name: Self.notificationName,
+                object: nil,
+                userInfo: ["message": message]
+            )
+        }
+    }
+    
     func sendNotification(message: String) {
-        Self.notificationCenter.post(
-            name: Self.notificationName,
-            object: nil,
-            userInfo: ["message": message]
-        )
+        send([message])
     }
     
     func sendNotification(intValue: Int) {
@@ -42,8 +48,7 @@ final class NotificationCenterEarlyObserverSample {
     
     func sendNotificationBatch() {
         // 7個程度は送信できる
-        for i in 101...110 {
-            sendNotification(message: "Batch value: \(i)")
-        }
+        let messages = (101...110).map { "Batch value: \($0)" }
+        send(messages)
     }
 }

@@ -33,9 +33,11 @@ final class PassthroughSubjectUnbufferedSample {
         print("PassthroughSubjectUnbufferedSample deinit end")
     }
     
-    func send(_ value: Int) {
-        // 受信側で待機していて単独で送信する分には受信できる
-        subject.send(value)
+    func send(_ values: [Int]) {
+        for value in values {
+            // 受信側で待機していて単独で送信する分には受信できる
+            subject.send(value)
+        }
     }
     
     func finish() {
@@ -44,8 +46,7 @@ final class PassthroughSubjectUnbufferedSample {
     
     func sendBatch() {
         // ほぼ受信できない
-        for i in 101...110 {
-            subject.send(i)
-        }
+        let values = Array(101...110)
+        send(values)
     }
 }

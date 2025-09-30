@@ -26,12 +26,18 @@ final class NotificationCenterLateObserverSample {
         print("NotificationCenterLateObserverSample deinit end")
     }
     
+    func send(_ messages: [String]) {
+        for message in messages {
+            Self.notificationCenter.post(
+                name: Self.notificationName,
+                object: nil,
+                userInfo: ["message": message]
+            )
+        }
+    }
+    
     func sendNotification(message: String) {
-        Self.notificationCenter.post(
-            name: Self.notificationName,
-            object: nil,
-            userInfo: ["message": message]
-        )
+        send([message])
     }
     
     func sendNotification(intValue: Int) {

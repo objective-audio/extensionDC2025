@@ -27,8 +27,10 @@ final class PassthroughSubjectBufferedSample {
         print("PassthroughSubjectBufferedSample deinit end")
     }
     
-    func send(_ value: Int) {
-        subject.send(value)
+    func send(_ values: [Int]) {
+        for value in values {
+            subject.send(value)
+        }
     }
     
     func finish() {
@@ -37,8 +39,7 @@ final class PassthroughSubjectBufferedSample {
     
     func sendBatch() {
         // バッファより少し大きい数（15個）を送信
-        for i in 100...115 {
-            subject.send(i)
-        }
+        let values = Array(100...115)
+        send(values)
     }
 }

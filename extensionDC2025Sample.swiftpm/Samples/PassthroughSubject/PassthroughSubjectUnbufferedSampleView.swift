@@ -9,8 +9,8 @@ struct PassthroughSubjectUnbufferedSampleView: View {
             Text("Current Value: \(currentValue)")
             
             Button("Send +1") {
+                sample.send([currentValue])
                 currentValue += 1
-                sample.send(currentValue)
             }
             
             Button("Send Batch (10 values)") {

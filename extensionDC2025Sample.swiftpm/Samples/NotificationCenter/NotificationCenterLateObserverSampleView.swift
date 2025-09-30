@@ -9,8 +9,8 @@ struct NotificationCenterLateObserverSampleView: View {
             Text("Current Value: \(currentValue)")
             
             Button("Send +1") {
-                currentValue += 1
                 sample.sendNotification(intValue: currentValue)
+                currentValue += 1
             }
             
             Button("Send Custom Message") {

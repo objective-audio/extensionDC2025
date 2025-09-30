@@ -26,8 +26,10 @@ final class CurrentValueSubjectSample {
         print("CurrentValueSubjectSample deinit end")
     }
     
-    func send(_ value: Int) {
-        subject.send(value)
+    func send(_ values: [Int]) {
+        for value in values {
+            subject.send(value)
+        }
     }
     
     func finish() {
@@ -36,8 +38,7 @@ final class CurrentValueSubjectSample {
     
     func sendBatch() {
         // 少なくとも最後は受信できる
-        for i in 101...110 {
-            subject.send(i)
-        }
+        let values = Array(101...110)
+        send(values)
     }
 }
