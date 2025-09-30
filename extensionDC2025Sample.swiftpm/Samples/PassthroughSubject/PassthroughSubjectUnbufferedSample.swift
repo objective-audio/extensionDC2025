@@ -8,8 +8,10 @@ final class PassthroughSubjectUnbufferedSample {
     init() {
         subject = PassthroughSubject<Int, Never>()
         
-        task = Task { [subject] in
-            for await value in subject.values {
+        let values = subject.values
+        
+        task = Task {
+            for await value in values {
                 print("PassthroughSubjectUnbufferedSample value: \(value)")
             }
         }
