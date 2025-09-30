@@ -55,7 +55,7 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         Text("PassthroughSubject Sample")
                             .font(.headline)
-                        Text("CombineのPassthroughSubjectのvaluesの動作確認")
+                        Text("values受信処理開始前に送信された値は受信できない")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
