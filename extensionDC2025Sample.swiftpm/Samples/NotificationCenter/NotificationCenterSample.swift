@@ -1,14 +1,14 @@
 import Foundation
 
 final class NotificationCenterSample {
-    private let notificationCenter = NotificationCenter.default
-    private let notificationName = Notification.Name("SampleNotification")
+    private static let notificationCenter = NotificationCenter.default
+    private static let notificationName = Notification.Name("SampleNotification")
     private let task: Task<Void, Never>
     
     init() {
         // AsyncSequenceを返すnotifications関数を使用
         task = Task {
-            for await notification in notificationCenter.notifications(named: notificationName) {
+            for await notification in Self.notificationCenter.notifications(named: Self.notificationName) {
                 if let userInfo = notification.userInfo,
                    let message = userInfo["message"] as? String {
                     print("NotificationCenterSample received: \(message)")
@@ -25,8 +25,8 @@ final class NotificationCenterSample {
     }
     
     func sendNotification(message: String) {
-        notificationCenter.post(
-            name: notificationName,
+        Self.notificationCenter.post(
+            name: Self.notificationName,
             object: nil,
             userInfo: ["message": message]
         )
