@@ -38,16 +38,20 @@ final class PassthroughSubjectUnbufferedSample {
     }
     
     func send(_ values: [Int], wait: WaitMethod = .none) {
-        // 受信側で待機していれば一つは受信できる
-        for value in values {
-            subject.send(value)
-            switch wait {
-            case .none:
-                break
-            case .yield:
-                Task.yield()
-            case .sleep(let seconds):
-                try? await Task.sleep(for: .seconds(seconds))
+        Task {
+            for value in values {
+                subject.send(value)
+                switch wait {
+                case .none:
+                    // 待ちを入れなければ受信できないか、1個程度受信できる
+                    break
+                case .yield:
+                    // yieldを入れただけでは取りこぼすことが多い
+                    await Task.yield()
+                case .sleep(let seconds):
+                    // sleepを入れた場合、受信側がそれより十分に軽ければ受信できる
+                    try? await Task.sleep(for: .seconds(seconds))
+                }
             }
         }
     }
