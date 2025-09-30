@@ -38,12 +38,5 @@ final class NotificationCenterEarlyObserverSample {
         }
     }
     
-    func sendNotification(message: String) {
-        send([message])
-    }
-    
-    func sendNotification(intValue: Int) {
-        sendNotification(message: "Value: \(intValue)")
-    }
     
 }
