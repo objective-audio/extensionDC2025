@@ -15,8 +15,6 @@ final class PassthroughSubjectSample {
         }
         
         subject.send(0)
-        
-        subject.send(completion: .finished)
     }
     
     deinit { task.cancel() }
