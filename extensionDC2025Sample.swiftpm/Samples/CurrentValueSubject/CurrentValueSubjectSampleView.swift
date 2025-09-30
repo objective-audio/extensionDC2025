@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CurrentValueSubjectSampleView: View {
     let sample = CurrentValueSubjectSample()
-    @State private var currentValue: Int = 0
+    @State private var currentValue: Int = 1
     
     var body: some View {
         VStack(spacing: 20) {
