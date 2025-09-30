@@ -1,6 +1,12 @@
 import Foundation
 import Combine
 
+enum WaitMethod {
+    case none
+    case yield
+    case sleep(seconds: Double)
+}
+
 final class PassthroughSubjectUnbufferedSample {
     private let subject: PassthroughSubject<Int, Never>
     private let task: Task<Void, Never>
@@ -31,10 +37,18 @@ final class PassthroughSubjectUnbufferedSample {
         print("PassthroughSubjectUnbufferedSample deinit end")
     }
     
-    func send(_ values: [Int]) {
+    func send(_ values: [Int], wait: WaitMethod = .none) {
         // 受信側で待機していれば一つは受信できる
         for value in values {
             subject.send(value)
+            switch wait {
+            case .none:
+                break
+            case .yield:
+                Task.yield()
+            case .sleep(let seconds):
+                try? await Task.sleep(for: .seconds(seconds))
+            }
         }
     }
     
