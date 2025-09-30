@@ -38,10 +38,10 @@ final class AsyncStreamSample {
         continuation.finish()
     }
     
-    func sendBatch(startValue: Int) {
-        // 10個まとめて送信
-        for i in startValue..<(startValue + 10) {
-            continuation.yield(i)
+    func sendBatch(values: [Int]) {
+        // 配列の値をまとめて送信
+        for value in values {
+            continuation.yield(value)
         }
     }
 }
