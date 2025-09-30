@@ -6,6 +6,7 @@ enum SampleDestination: Hashable {
     case notificationCenterEarly
     case passthroughSubjectUnbuffered
     case passthroughSubjectBuffered
+    case currentValueSubject
 }
 
 struct ContentView: View {
@@ -73,6 +74,18 @@ struct ContentView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                
+                Button {
+                    navigationPath.append(SampleDestination.currentValueSubject)
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text("CurrentValueSubject Sample")
+                            .font(.headline)
+                        Text("初期値を持つSubjectの動作確認")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
             .navigationTitle("Concurrency Samples")
             .navigationDestination(for: SampleDestination.self) { destination in
@@ -87,6 +100,8 @@ struct ContentView: View {
                     PassthroughSubjectUnbufferedSampleView()
                 case .passthroughSubjectBuffered:
                     PassthroughSubjectBufferedSampleView()
+                case .currentValueSubject:
+                    CurrentValueSubjectSampleView()
                 }
             }
         }
