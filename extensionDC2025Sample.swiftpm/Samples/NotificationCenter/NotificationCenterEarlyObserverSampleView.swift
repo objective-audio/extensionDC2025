@@ -21,6 +21,10 @@ struct NotificationCenterEarlyObserverSampleView: View {
             Button("Send Custom Message") {
                 sample.sendNotification(message: "Custom message at \(Date())")
             }
+            
+            Button("Send Batch (10 notifications)") {
+                sample.sendNotificationBatch()
+            }
         }
         .navigationTitle("NotificationCenter")
     }

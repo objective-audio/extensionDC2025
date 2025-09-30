@@ -37,4 +37,10 @@ final class NotificationCenterEarlyObserverSample {
     func sendNotification(intValue: Int) {
         sendNotification(message: "Value: \(intValue)")
     }
+    
+    func sendNotificationBatch() {
+        for i in 1...10 {
+            sendNotification(message: "Batch value: \(i)")
+        }
+    }
 }
