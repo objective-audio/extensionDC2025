@@ -9,8 +9,10 @@ final class CurrentValueSubjectSample {
         print("CurrentValueSubjectSample init start")
         subject = CurrentValueSubject<Int, Never>(0)
         
-        task = Task { [subject] in
-            for await value in subject.values {
+        let values = subject.values
+        
+        task = Task {
+            for await value in values {
                 print("CurrentValueSubjectSample value: \(value)")
             }
         }
