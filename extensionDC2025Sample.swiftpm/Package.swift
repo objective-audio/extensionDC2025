@@ -36,7 +36,11 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency"),
+                .define("SWIFT_STRICT_CONCURRENCY", .when(configuration: .debug))
+            ]
         )
     ],
     swiftLanguageVersions: [.version("6")]
