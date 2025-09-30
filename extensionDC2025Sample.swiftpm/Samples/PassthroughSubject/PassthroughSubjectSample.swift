@@ -8,7 +8,7 @@ final class PassthroughSubjectSample {
     init() {
         subject = PassthroughSubject<Int, Never>()
         
-        task = Task {
+        task = Task { [subject] in
             for await value in subject.values {
                 print("PassthroughSubjectSample value: \(value)")
             }
