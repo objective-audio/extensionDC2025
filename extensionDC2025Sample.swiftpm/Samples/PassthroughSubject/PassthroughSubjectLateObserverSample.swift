@@ -35,4 +35,11 @@ final class PassthroughSubjectLateObserverSample {
     func finish() {
         subject.send(completion: .finished)
     }
+    
+    func sendBatch() {
+        // バッファより少し大きい数（15個）を送信
+        for i in 1...15 {
+            subject.send(i)
+        }
+    }
 }

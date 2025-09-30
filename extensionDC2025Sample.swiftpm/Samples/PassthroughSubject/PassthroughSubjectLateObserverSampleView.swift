@@ -21,6 +21,10 @@ struct PassthroughSubjectLateObserverSampleView: View {
             Button("Finish Stream") {
                 sample.finish()
             }
+            
+            Button("Send Batch (15 values)") {
+                sample.sendBatch()
+            }
         }
         .navigationTitle("PassthroughSubject")
     }
