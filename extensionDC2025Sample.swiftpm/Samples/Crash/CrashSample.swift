@@ -4,7 +4,7 @@ import Combine
 /* @MainActor */
 final class CrashSample {
     let subject = CurrentValueSubject<Int, Never>(0)
-    var cancellable: AnyCancellable?
+    let cancellable: AnyCancellable
 
     init() {
       cancellable = subject
