@@ -25,6 +25,11 @@ struct NotificationCenterEarlyObserverSampleView: View {
             Button("Send Batch (10 notifications)") {
                 sample.sendNotificationBatch()
             }
+            
+            Button("Finish Stream") {
+                sample.finish()
+            }
+            .foregroundColor(.red)
         }
         .navigationTitle("NotificationCenter")
     }

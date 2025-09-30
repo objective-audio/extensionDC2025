@@ -21,6 +21,7 @@ struct PassthroughSubjectBufferedSampleView: View {
             Button("Finish Stream") {
                 sample.finish()
             }
+            .foregroundColor(.red)
             
             Button("Send Batch (15 values)") {
                 sample.sendBatch()

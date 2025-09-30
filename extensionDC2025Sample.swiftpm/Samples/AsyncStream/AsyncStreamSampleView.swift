@@ -21,6 +21,7 @@ struct AsyncStreamSampleView: View {
             Button("Finish Stream") {
                 sample.finish()
             }
+            .foregroundColor(.red)
         }
         .navigationTitle("AsyncStream")
     }

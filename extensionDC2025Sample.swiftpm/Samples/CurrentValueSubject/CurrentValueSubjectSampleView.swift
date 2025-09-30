@@ -21,6 +21,7 @@ struct CurrentValueSubjectSampleView: View {
             Button("Finish Stream") {
                 sample.finish()
             }
+            .foregroundColor(.red)
             
             Button("Send Batch (10 values)") {
                 sample.sendBatch()
