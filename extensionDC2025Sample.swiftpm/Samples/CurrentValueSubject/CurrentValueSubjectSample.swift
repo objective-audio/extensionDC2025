@@ -6,6 +6,7 @@ final class CurrentValueSubjectSample {
     private let task: Task<Void, Never>
     
     init() {
+        print("CurrentValueSubjectSample init start")
         subject = CurrentValueSubject<Int, Never>(0)
         
         task = Task { [subject] in
@@ -20,7 +21,10 @@ final class CurrentValueSubjectSample {
         subject.send(1)
     }
     
-    deinit { task.cancel() }
+    deinit { 
+        task.cancel()
+        print("CurrentValueSubjectSample deinit end")
+    }
     
     func send(_ value: Int) {
         subject.send(value)

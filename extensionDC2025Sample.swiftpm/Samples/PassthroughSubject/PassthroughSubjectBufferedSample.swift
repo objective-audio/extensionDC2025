@@ -6,6 +6,7 @@ final class PassthroughSubjectBufferedSample {
     private let task: Task<Void, Never>
     
     init() {
+        print("PassthroughSubjectBufferedSample init start")
         subject = PassthroughSubject<Int, Never>()
         
         let values = subject.buffer(size: 10, prefetch: .byRequest, whenFull: .dropOldest).values
@@ -21,7 +22,10 @@ final class PassthroughSubjectBufferedSample {
         subject.send(0)
     }
     
-    deinit { task.cancel() }
+    deinit { 
+        task.cancel()
+        print("PassthroughSubjectBufferedSample deinit end")
+    }
     
     func send(_ value: Int) {
         subject.send(value)

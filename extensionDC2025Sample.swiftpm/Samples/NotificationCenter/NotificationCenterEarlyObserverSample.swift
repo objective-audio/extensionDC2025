@@ -6,6 +6,7 @@ final class NotificationCenterEarlyObserverSample {
     private let task: Task<Void, Never>
     
     init() {
+        print("NotificationCenterEarlyObserverSample init start")
         // notificationsの取得をTaskの前で行う
         let notifications = Self.notificationCenter.notifications(named: Self.notificationName)
         
@@ -24,6 +25,7 @@ final class NotificationCenterEarlyObserverSample {
     
     deinit {
         task.cancel()
+        print("NotificationCenterEarlyObserverSample deinit end")
     }
     
     func sendNotification(message: String) {

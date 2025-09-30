@@ -6,6 +6,7 @@ final class NotificationCenterLateObserverSample {
     private let task: Task<Void, Never>
     
     init() {
+        print("NotificationCenterLateObserverSample init start")
         task = Task {
             let notifications = Self.notificationCenter.notifications(named: Self.notificationName)
             for await notification in notifications {
@@ -22,6 +23,7 @@ final class NotificationCenterLateObserverSample {
     
     deinit {
         task.cancel()
+        print("NotificationCenterLateObserverSample deinit end")
     }
     
     func sendNotification(message: String) {

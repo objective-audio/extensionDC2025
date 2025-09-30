@@ -6,6 +6,7 @@ final class AsyncStreamSample {
     private let task: Task<Void, Never>
     
     init() {
+        print("AsyncStreamSample init start")
         let (stream, continuation) = AsyncStream<Int>.makeStream()
         
         self.stream = stream
@@ -24,7 +25,10 @@ final class AsyncStreamSample {
         }
     }
     
-    deinit { task.cancel() }
+    deinit { 
+        task.cancel()
+        print("AsyncStreamSample deinit end")
+    }
     
     func send(_ value: Int) {
         continuation.yield(value)

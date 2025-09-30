@@ -6,6 +6,7 @@ final class PassthroughSubjectUnbufferedSample {
     private let task: Task<Void, Never>
     
     init() {
+        print("PassthroughSubjectUnbufferedSample init start")
         subject = PassthroughSubject<Int, Never>()
         
         let values = subject.values
@@ -27,7 +28,10 @@ final class PassthroughSubjectUnbufferedSample {
         }
     }
     
-    deinit { task.cancel() }
+    deinit { 
+        task.cancel()
+        print("PassthroughSubjectUnbufferedSample deinit end")
+    }
     
     func send(_ value: Int) {
         // 受信側で待機していて単独で送信する分には受信できる
