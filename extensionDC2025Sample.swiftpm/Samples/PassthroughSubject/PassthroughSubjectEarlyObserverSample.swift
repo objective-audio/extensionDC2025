@@ -8,8 +8,8 @@ final class PassthroughSubjectEarlyObserverSample {
     init() {
         subject = PassthroughSubject<Int, Never>()
         
-        // valuesからmakeAsyncIteratorでIteratorを作成
-        var iterator = subject.values.makeAsyncIterator()
+        let values = subject.buffer(size: 10, prefetch: .byRequest, whenFull: .dropOldest).values
+        var iterator = values.makeAsyncIterator()
         
         task = Task {
             while let value = await iterator.next() {
