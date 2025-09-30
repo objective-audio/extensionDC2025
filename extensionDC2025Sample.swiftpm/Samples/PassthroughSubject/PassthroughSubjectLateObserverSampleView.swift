@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct PassthroughSubjectSampleView: View {
-    let sample = PassthroughSubjectSample()
+struct PassthroughSubjectLateObserverSampleView: View {
+    let sample = PassthroughSubjectLateObserverSample()
     @State private var currentValue: Int = 0
     
     var body: some View {

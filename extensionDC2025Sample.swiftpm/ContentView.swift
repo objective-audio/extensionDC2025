@@ -71,7 +71,7 @@ struct ContentView: View {
                 case .notificationCenterEarly:
                     NotificationCenterEarlyObserverSampleView()
                 case .passthroughSubject:
-                    PassthroughSubjectSampleView()
+                    PassthroughSubjectLateObserverSampleView()
                 }
             }
         }
