@@ -23,6 +23,16 @@ struct ContentView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                
+                NavigationLink(destination: NotificationCenterEarlyObserverSampleView()) {
+                    VStack(alignment: .leading) {
+                        Text("NotificationCenter Early Observer")
+                            .font(.headline)
+                        Text("notifications取得後にpostされた通知は受信できる")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
             .navigationTitle("Concurrency Samples")
         }
