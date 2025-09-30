@@ -4,8 +4,8 @@ enum SampleDestination: Hashable {
     case asyncStream
     case notificationCenterLate
     case notificationCenterEarly
-    case passthroughSubjectLate
-    case passthroughSubjectEarly
+    case passthroughSubjectUnbuffered
+    case passthroughSubjectBuffered
 }
 
 struct ContentView: View {
@@ -51,24 +51,24 @@ struct ContentView: View {
                 }
                 
                 Button {
-                    navigationPath.append(SampleDestination.passthroughSubjectLate)
+                    navigationPath.append(SampleDestination.passthroughSubjectUnbuffered)
                 } label: {
                     VStack(alignment: .leading) {
-                        Text("PassthroughSubject Late Observer")
+                        Text("PassthroughSubject Unbuffered")
                             .font(.headline)
-                        Text("values受信処理開始前に送信された値は受信できない")
+                        Text("何も対策をしていないまま使用")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
                 }
                 
                 Button {
-                    navigationPath.append(SampleDestination.passthroughSubjectEarly)
+                    navigationPath.append(SampleDestination.passthroughSubjectBuffered)
                 } label: {
                     VStack(alignment: .leading) {
-                        Text("PassthroughSubject Early Observer")
+                        Text("PassthroughSubject Buffered")
                             .font(.headline)
-                        Text("values受信処理開始後に送信された値は受信できる")
+                        Text("バッファやIteratorなどの対策をした")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
@@ -83,10 +83,10 @@ struct ContentView: View {
                     NotificationCenterLateObserverSampleView()
                 case .notificationCenterEarly:
                     NotificationCenterEarlyObserverSampleView()
-                case .passthroughSubjectLate:
-                    PassthroughSubjectLateObserverSampleView()
-                case .passthroughSubjectEarly:
-                    PassthroughSubjectEarlyObserverSampleView()
+                case .passthroughSubjectUnbuffered:
+                    PassthroughSubjectUnbufferedSampleView()
+                case .passthroughSubjectBuffered:
+                    PassthroughSubjectBufferedSampleView()
                 }
             }
         }

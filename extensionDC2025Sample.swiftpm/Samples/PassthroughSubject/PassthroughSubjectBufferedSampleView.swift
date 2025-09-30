@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct PassthroughSubjectLateObserverSampleView: View {
-    let sample = PassthroughSubjectLateObserverSample()
+struct PassthroughSubjectBufferedSampleView: View {
+    let sample = PassthroughSubjectBufferedSample()
     @State private var currentValue: Int = 0
     
     var body: some View {
@@ -20,6 +20,10 @@ struct PassthroughSubjectLateObserverSampleView: View {
             
             Button("Finish Stream") {
                 sample.finish()
+            }
+            
+            Button("Send Batch (15 values)") {
+                sample.sendBatch()
             }
         }
         .navigationTitle("PassthroughSubject")

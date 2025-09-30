@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-final class PassthroughSubjectLateObserverSample {
+final class PassthroughSubjectUnbufferedSample {
     private let subject: PassthroughSubject<Int, Never>
     private let task: Task<Void, Never>
     
@@ -10,7 +10,7 @@ final class PassthroughSubjectLateObserverSample {
         
         task = Task { [subject] in
             for await value in subject.values {
-                print("PassthroughSubjectLateObserverSample value: \(value)")
+                print("PassthroughSubjectUnbufferedSample value: \(value)")
             }
         }
         

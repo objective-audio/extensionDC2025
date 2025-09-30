@@ -1,7 +1,7 @@
 import Foundation
 import Combine
 
-final class PassthroughSubjectEarlyObserverSample {
+final class PassthroughSubjectBufferedSample {
     private let subject: PassthroughSubject<Int, Never>
     private let task: Task<Void, Never>
     
@@ -13,7 +13,7 @@ final class PassthroughSubjectEarlyObserverSample {
         
         task = Task {
             while let value = await iterator.next() {
-                print("PassthroughSubjectEarlyObserverSample value: \(value)")
+                print("PassthroughSubjectBufferedSample value: \(value)")
             }
         }
         
