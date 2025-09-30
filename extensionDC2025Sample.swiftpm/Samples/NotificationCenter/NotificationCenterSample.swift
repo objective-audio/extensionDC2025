@@ -8,7 +8,8 @@ final class NotificationCenterSample {
     init() {
         // AsyncSequenceを返すnotifications関数を使用
         task = Task {
-            for await notification in Self.notificationCenter.notifications(named: Self.notificationName) {
+            let notifications = Self.notificationCenter.notifications(named: Self.notificationName)
+            for await notification in notifications {
                 if let userInfo = notification.userInfo,
                    let message = userInfo["message"] as? String {
                     print("NotificationCenterSample received: \(message)")
@@ -16,12 +17,12 @@ final class NotificationCenterSample {
             }
         }
         
-        print("NotificationCenterSample initialized")
+        // 受信できない
+        sendNotification(message: "initialized")
     }
     
     deinit {
         task.cancel()
-        print("NotificationCenterSample deinitialized")
     }
     
     func sendNotification(message: String) {
@@ -32,7 +33,7 @@ final class NotificationCenterSample {
         )
     }
     
-    func sendNotificationWithValue(_ value: Int) {
-        sendNotification(message: "Value: \(value)")
+    func sendNotification(intValue: Int) {
+        sendNotification(message: "Value: \(intValue)")
     }
 }

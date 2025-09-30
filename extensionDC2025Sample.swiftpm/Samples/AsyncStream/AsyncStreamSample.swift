@@ -13,7 +13,7 @@ final class AsyncStreamSample {
         
         task = Task {
             for await value in stream {
-                print("AsyncStreamSample received value: \(value)")
+                print("AsyncStreamSample received : \(value)")
             }
         }
         
