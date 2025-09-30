@@ -16,9 +16,9 @@ final class CurrentValueSubjectSample {
         }
         
         // 受信できない
-        subject.send(0)
+        subject.send(-1)
         // 受信できる
-        subject.send(1)
+        subject.send(0)
     }
     
     deinit { 
