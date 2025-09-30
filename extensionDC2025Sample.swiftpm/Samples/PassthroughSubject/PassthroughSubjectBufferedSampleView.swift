@@ -18,14 +18,14 @@ struct PassthroughSubjectBufferedSampleView: View {
                 sample.send(currentValue)
             }
             
+            Button("Send Batch (15 values)") {
+                sample.sendBatch()
+            }
+            
             Button("Finish Stream") {
                 sample.finish()
             }
             .foregroundColor(.red)
-            
-            Button("Send Batch (15 values)") {
-                sample.sendBatch()
-            }
         }
         .navigationTitle("PassthroughSubject")
     }

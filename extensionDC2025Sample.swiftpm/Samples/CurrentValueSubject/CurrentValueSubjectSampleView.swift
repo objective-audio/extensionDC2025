@@ -18,14 +18,14 @@ struct CurrentValueSubjectSampleView: View {
                 sample.send(currentValue)
             }
             
+            Button("Send Batch (10 values)") {
+                sample.sendBatch()
+            }
+            
             Button("Finish Stream") {
                 sample.finish()
             }
             .foregroundColor(.red)
-            
-            Button("Send Batch (10 values)") {
-                sample.sendBatch()
-            }
         }
         .navigationTitle("CurrentValueSubject")
     }
