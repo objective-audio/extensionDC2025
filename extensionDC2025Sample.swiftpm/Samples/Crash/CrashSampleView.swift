@@ -12,12 +12,6 @@ struct CrashSampleView: View {
             Text("このサンプルを実行するとクラッシュします")
                 .foregroundColor(.orange)
                 .multilineTextAlignment(.center)
-            
-            Button("Crash App") {
-                sample.crash()
-            }
-            .foregroundColor(.red)
-            .font(.title3)
         }
         .navigationTitle("Crash Sample")
     }
