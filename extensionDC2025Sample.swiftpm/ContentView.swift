@@ -33,6 +33,16 @@ struct ContentView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+                
+                NavigationLink(destination: PassthroughSubjectSampleView()) {
+                    VStack(alignment: .leading) {
+                        Text("PassthroughSubject Sample")
+                            .font(.headline)
+                        Text("CombineのPassthroughSubjectのvaluesの動作確認")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
             .navigationTitle("Concurrency Samples")
         }
