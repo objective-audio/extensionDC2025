@@ -13,10 +13,10 @@ struct PassthroughSubjectBufferedSampleView: View {
                 currentValue += 1
             }
             
-            Button("Send Batch (10 values)") {
-                let values = Array(currentValue..<(currentValue + 10))
+            Button("Send Batch (15 values)") {
+                let values = Array(currentValue..<(currentValue + 15))
                 sample.send(values)
-                currentValue += 10
+                currentValue += 15
             }
             
             Button("Finish Stream") {
